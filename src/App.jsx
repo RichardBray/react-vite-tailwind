@@ -1,8 +1,9 @@
 import Layout from "$components/Layout";
+import NewsPage from "$containers/News";
 
 function App() {
 
-  return <Layout />
+  return <NewsPage />
 }
 
 export default App
