@@ -31,8 +31,9 @@ export default function NewsPage() {
     return () => {
       ignoreResults = true;
     };
-  });
+  }, []);
 
+  console.log(results, "results")
   return (
     <Layout>
       <NewsList newsResults={changeDataKeys(results)} />
@@ -41,16 +42,17 @@ export default function NewsPage() {
 }
 
 function changeDataKeys(results) {
-  results.map(result => ({
+  return results.map(result => ({
+    key: result.id,
     author: result.by,
     title: result.title,
     url: result.url,
-    totalComments: result.kids.length(),
+    totalComments: result.kids?.length,
     time: formatTime(result.time),
   }));
 }
 
 function formatTime(time) {
   const date = new Date(time * 1000);
-  return date;
+  return date.toString();
 }
